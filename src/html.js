@@ -12,13 +12,14 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <link
+          rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        ></link>
+        />
         <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;900&display=swap"
           rel="stylesheet"
-        ></link>
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

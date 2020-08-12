@@ -1,17 +1,57 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import M from "materialize-css/dist/js/materialize.min.js"
 import MaterialIcon from "@material/react-material-icon"
 import Logo from "../images/logo.png"
+import { makeStyles } from "@material-ui/core/styles"
+import Drawer from "@material-ui/core/Drawer"
+import Button from "@material-ui/core/Button"
+import List from "@material-ui/core/List"
+import Divider from "@material-ui/core/Divider"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemIcon from "@material-ui/core/ListItemIcon"
+import ListItemText from "@material-ui/core/ListItemText"
+
+const useStyles = makeStyles({
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: "auto",
+  },
+})
 
 const Header = ({ siteTitle }) => {
-  useEffect(() => {
-    let sidenav = document.querySelector("#slide-out")
-    M.Sidenav.init(sidenav, {
-      edge: "right",
-    })
+  const classes = useStyles()
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
   })
+
+  const toggleDrawer = (anchor, open) => event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return
+    }
+
+    setState({ ...state, [anchor]: open })
+  }
+
+  const list = anchor => (
+    <div
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+      style={{ width: "300px" }}
+    >
+      {console.log(anchor)}
+      Contact Details
+    </div>
+  )
 
   return (
     <header>
@@ -27,15 +67,27 @@ const Header = ({ siteTitle }) => {
             <li>
               <a href="#">About us</a>
             </li>
-            <li>
-              <a
-                href="#"
-                data-target="slide-out"
-                className="sidenav-trigger show-on-large"
-              >
-                <MaterialIcon icon="apps" title="Contact" />
-              </a>
-            </li>
+            {["right"].map(anchor => (
+              <li key={anchor}>
+                <MaterialIcon
+                  icon="apps"
+                  title="Contact"
+                  onClick={toggleDrawer(anchor, true)}
+                  style={{
+                    cursor: "pointer",
+                    paddingTop: "0",
+                    paddingLeft: "10px",
+                  }}
+                />
+                <Drawer
+                  anchor={anchor}
+                  open={state[anchor]}
+                  onClose={toggleDrawer(anchor, false)}
+                >
+                  {list(anchor)}
+                </Drawer>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
