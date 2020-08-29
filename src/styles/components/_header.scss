@@ -1,0 +1,11 @@
+nav {
+    background: transparent;
+    box-shadow: none;
+    margin-bottom: 5rem;
+
+
+    & a {
+        color: #333 !important;
+        font-weight: bold;
+    }
+}

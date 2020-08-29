@@ -6,18 +6,29 @@ const Jumbotron = () => {
   return (
     <div className="container">
       <div className="row">
-        {/* <div className="col s12">
-          This div is 12-columns wide on all screen sizes
-        </div> */}
         <div className="col s12 m6">
           <div
             style={{
               width: "100px",
               height: "200px",
-              backgroundColor: "yellow",
+              backgroundColor: "#F6CD3E",
               position: "absolute",
               zIndex: "-1",
               left: "30%",
+            }}
+            data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"
+          ></div>
+          <div
+            style={{
+              width: "629px",
+              height: "62px",
+              backgroundColor: "#F6CD3E",
+              position: "absolute",
+              zIndex: "-1",
+              left: "45%",
+              top: "80%",
             }}
             data-aos="flip-left"
             data-aos-easing="ease-out-cubic"

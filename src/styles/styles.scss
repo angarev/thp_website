@@ -1,15 +1,9 @@
-$font-stack: 'Roboto',
-Helvetica,
-sans-serif;
+@charset "UTF-8";
 
-$primary-color: #333;
-
-body {
-    font: 100% $font-stack;
-    color: $primary-color;
-}
+// Variables;
+@import "components/variables";
 
 
-h1 {
-    font-weight: bold;
-}
+@import "components/global";
+
+@import './components/header'
